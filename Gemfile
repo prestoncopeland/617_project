@@ -8,10 +8,17 @@ gem 'rails', '4.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
-#Handle images using paperclip
+# Handle images using paperclip
 gem "paperclip", "~> 3.0"
 
+# Country List
+gem 'country_select'
+
+# Language List
+gem "language_list", "~> 1.0.0"
+
 group :development, :test do
+	# show the table fields in respective models
 	gem "annotate", "~> 2.5.0"
 end
 

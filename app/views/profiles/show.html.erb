@@ -1,0 +1,50 @@
+<p class="well"><%= @profile.username %></p>
+
+<div class="show">
+<p>
+  <%= image_tag @profile.avatar.url(:medium) %>
+</p>
+
+<p>
+  <b>First Name:</b>
+  <%= @profile.first_name %>
+</p>
+
+<p>
+  <b>Last Name:</b>
+  <%= @profile.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @profile.email  %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @profile.country %>
+</p>
+
+<p>
+  <b>Time zone:</b>
+  <%= @profile.time_zone %>
+</p>
+
+<p>
+  <b>Native Language:</b>
+  <%= LanguageList::LanguageInfo.find(@profile.native_language) %>
+</p>
+
+<p>
+  <b>Blog URL:</b>
+  <%= @profile.blog_url %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @profile.description %>
+</p>
+</div>
+
+<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<%= link_to 'Back', profiles_path %>

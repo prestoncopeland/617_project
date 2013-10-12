@@ -1,0 +1,46 @@
+<div class="hero-unit">
+<%= form_for(@profile) do |f| %>
+	<%= render 'shared/error_messages' %>
+	
+  <%= f.label :username %>
+  <%= f.text_field :username, class: "span4" %>
+
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name, class: "span4" %>
+
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name, class: "span4" %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email, class: "span4" %>
+
+  <%= f.label :country %>
+  <%= f.country_select (:country), nil, {}, {class: "span4"} %>
+
+  <%= f.label :time_zone %>
+  <%= f.time_zone_select :time_zone, nil, {}, {class: "span4"}%>
+
+  <%= f.label :native_language %>
+  <%= f.select :native_language, options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_1", "name"), {}, {class: "span4"} %>
+
+  <%= f.label :blog_url %>
+  <%= f.text_field :blog_url, class: "span4" %>
+
+	<div class="fileupload fileupload-new" data-provides="fileupload">
+		<div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
+		<div>
+			<span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><%= f.file_field :avatar %></span>
+			<a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+		</div>
+	</div>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, :cols => "1", :rows => "4", class: "span4" %>
+
+	<%= f.label :study_language %>
+  <%= f.select :study_language, options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_1", "name"), {}, {class: "span4"} %>
+
+  <br>
+  <%= f.submit "Save", class: "btn btn-large btn-primary" %>
+<% end %>
+</div>
