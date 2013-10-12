@@ -8,6 +8,13 @@ gem 'rails', '4.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+#Handle images using paperclip
+gem "paperclip", "~> 3.0"
+
+group :development, :test do
+	gem "annotate", "~> 2.5.0"
+end
+
 # Use bootstrap for styles
 gem 'bootstrap-sass', '~> 2.3.2.2'
 
