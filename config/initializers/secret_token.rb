@@ -9,4 +9,20 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Cosc617app::Application.config.secret_key_base = '6ef750486d2086f86406b73773cbab010fefab7ab67f3b04df2cfe75d39ad0b4f4ec9bb6b8686bf839175058fbe8321d22310d7b40e700ea101c3ee13307683c'
+
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Cosc617app::Application.config.secret_key_base = secure_token
