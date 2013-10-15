@@ -22,7 +22,7 @@
 #
 
 class Profile < ActiveRecord::Base
-	
+
 	has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
 
 	validates :username, presence: true
@@ -34,7 +34,7 @@ class Profile < ActiveRecord::Base
 	validates :native_language, presence: true
 	validates :blog_url, presence: true
 	validates :description, presence: true
-	validates :avatar, presence: true
+	#validates :avatar, presence: true
 
 	default_scope order: 'profiles.created_at DESC'
 end
