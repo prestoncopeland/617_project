@@ -1,14 +1,24 @@
 <%= render 'shared/error_messages', obj: @user %>
 
-<% @page_title = "UserAuth | Signup" %>
-<div class="Sign_Form">
     <h1>Sign Up</h1>
-      <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
-        <p> Username:</br> <%= f.text_field :name%> </p>
+      <%= form_for @user do |f| %>
 
-        <p> Password:</br> <%= f.password_field :password%> </p>
-        <p> Password Confirmation:</br> <%= f.password_field :password_confirmation%> </p>
-        <%= f.submit "Log in" %>
+        <p>
+          <%= f.label :name %> <br/>
+          <%= f.text_field :name%>
+        </p>
+        <p>
+          <%= f.label :email %> <br/>
+          <%= f.text_field :email%>
+        </p>
+        <p>
+          <%= f.label :password %> <br/>
+          <%= f.password_field :password%>
+        </p>
+        <p>
+          <%= f.label :password_confirmation %> <br/>
+          <%= f.password_field :password_confirmation%>
+        </p>
+        <%= f.submit "Sign up" %>
   <% end %>
 
-</div>

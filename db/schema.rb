@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131015133748) do
+ActiveRecord::Schema.define(version: 20131015201545) do
 
   create_table "profiles", force: true do |t|
     t.string   "username"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20131015133748) do
     t.string   "encrypted_password"
     t.string   "salt"
     t.string   "name"
+    t.string   "email"
   end
 
 end
