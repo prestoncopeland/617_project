@@ -1,7 +1,7 @@
 <div class="hero-unit">
 <%= form_for(@profile) do |f| %>
-	<%= render 'shared/error_messages' %>
-	
+	<%= render 'shared/error_messages', obj: @profile %>
+
   <%= f.label :username %>
   <%= f.text_field :username, class: "span4" %>
 
