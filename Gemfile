@@ -20,6 +20,9 @@ gem "language_list", "~> 1.0.0"
 group :development, :test do
 	# show the table fields in respective models
 	gem "annotate", "~> 2.5.0"
+
+  gem 'pry'
+
 end
 
 # Use bootstrap for styles
@@ -55,6 +58,8 @@ end
 #gem 'bcrypt-ruby', '~> 3.0.0'
 
  gem 'bcrypt-ruby'
+
+
 
 # Use unicorn as the app server
 # gem 'unicorn'
