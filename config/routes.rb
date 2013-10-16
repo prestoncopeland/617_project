@@ -1,7 +1,7 @@
 Cosc617app::Application.routes.draw do
 
   get "log_in" => "sessions#new", :as => "log_in"
-  get "sign_up" => "users#new", :as => "sign_up"
+  get 'register', to: 'users#new', as: 'register'
   root 'static_pages#home', :as => "root"
 
   resources :profiles

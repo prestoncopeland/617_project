@@ -5,10 +5,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
     if @user.save
-      redirect_to "root", notice: "You signed up!"
+      flash[:notice] = "You are registered."
+      redirect_to root_path
     else
-       render "new"
+       render :new
     end
   end
 
@@ -17,6 +19,6 @@ private
     # since you'll be able to reuse the same permit list between create and update. Also, you
     # can specialize this method with per-user checking of permissible attributes.
     def user_params
-      params.required(:user).permit(:name, :encrypted_password, :salt, :email)
+      params.require(:user).permit(:name, :password, :email)
     end
 end
