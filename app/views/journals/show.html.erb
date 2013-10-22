@@ -1,0 +1,42 @@
+<p class="well"><%= @journal.title %></p>
+
+<div class = "hero-unit">
+
+<p>
+  <b>Date Started:</b>
+  <%= @journal.created_at %>
+</p>
+
+<p>
+  <b>Total Entries:</b>
+  <%= @total_entries %>
+</p>
+
+<p>
+  <b>Languages:</b>
+  <% @distinct_langs.each do |lang|  %>
+  <ul>
+    <li> <%= lang %> </li>
+  </ul>
+  <% end %>
+</p>
+
+<p>
+  <b>Entries:</b>
+  <% @entries.each do |entry|  %>
+  <ul>
+    <li>Title: <%= entry.title %> </li>
+    Date Created: <%= entry.created_at %>
+    <br/>
+    Entry: <%= entry.entry %>
+    <br/><br/>
+  </ul>
+  <% end %>
+</p>
+
+
+</div>
+
+<%= link_to 'Edit', edit_journal_path(@journal) %> |
+<%= link_to 'Add Entry', new_entry_path %> |
+<%= link_to 'Back', learner_home_path %>

@@ -1,0 +1,26 @@
+<div class="jumbotron">
+  <h1>Welcome, Learner!</h1>
+  <p class="lead">Redefining the language-learning process by offering a multitude of functionalities to make learning a range of languages (including English) not only easier, but also more engaging.</p>
+</div>
+
+<hr>
+
+<div class="row-fluid marketing">
+  <div class="span6">
+
+    <% if logged_in? %>
+      <!-- if journal hasn't been created -->
+      <% if current_user.journal.id == nil %>
+      <h4><%= link_to "Create Journal", new_journal_path%>
+      <% else %>
+      <%= link_to "View Journal", '/journals/:id'%>
+      <% end %>
+    <% else %>
+      <%= link_to "Login for Journal", login_path %>
+    <% end %> </h4>
+
+  </div>
+
+</div>
+
+

@@ -1,0 +1,17 @@
+<div class="hero-unit">
+<%= form_for(@entry) do |f| %>
+  <%= render 'shared/error_messages', obj: @entry %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "span4" %>
+
+  <%= f.label :language %>
+  <%= f.select :language, options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_1", "name"), {}, {class: "span4"} %>
+
+  <%= f.label :entry %>
+  <%= f.text_area :entry, :cols => "1", :rows => "8", class: "span4" %>
+
+  <br>
+  <%= f.submit "Save", class: "btn btn-large btn-primary" %>
+<% end %>
+</div>

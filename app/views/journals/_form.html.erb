@@ -1,0 +1,11 @@
+<div class="hero-unit">
+<%= form_for(@journal) do |f| %>
+  <%= render 'shared/error_messages', obj: @journal %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, class: "span4" %>
+
+  <br>
+  <%= f.submit "Save", class: "btn btn-large btn-primary" %>
+<% end %>
+</div>

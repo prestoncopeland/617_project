@@ -5,10 +5,13 @@ Cosc617app::Application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   get '/register', to: 'users#new', as: 'register'
+  get '/learner_home', to: 'static_pages#learner', :as => "learner_home"
 
   resources :profiles
   resources :sessions
   resources :users
+  resources :journals
+  resources :entries
 
 
   # The priority is based upon order of creation: first created -> highest priority.
