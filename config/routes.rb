@@ -1,15 +1,13 @@
 Cosc617app::Application.routes.draw do
-
+  root 'static_pages#home', :as => "root"
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
   get '/register', to: 'users#new', as: 'register'
-  root 'static_pages#home', :as => "root"
 
   resources :profiles
   resources :sessions
-
   resources :users
 
 

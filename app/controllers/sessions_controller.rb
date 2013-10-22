@@ -12,12 +12,13 @@ class SessionsController < ApplicationController
 
     #don't save objects into the session,
     #only ids
+    #can do one line b/c short circuit logic
     if user && user.authenticate(params[:password])
         session[:user_id] = user.id
         flash[:notice] = "You've logged in!"
         redirect_to root_path
     else
-      flash[:error] = "Invalid input."
+      flash[:error] = "Invalid input. Have you registered?"
       redirect_to login_path
     end
 

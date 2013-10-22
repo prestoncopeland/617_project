@@ -1,7 +1,10 @@
 class ProfilesController < ApplicationController
 
+  before_action :require_user
+
   def show
-    @profile = Profile.find(params[:id])
+    @user = current_user
+    @profile = @user.profile
   end
 
   def edit
@@ -30,6 +33,7 @@ class ProfilesController < ApplicationController
 
   def create
   	@profile = Profile.new(profile_params)
+    @profile.user = current_user
 		if @profile.save
 			flash[:success] = "Profile created"
 			redirect_to profiles_path
@@ -45,7 +49,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:username, :first_name, :last_name,
+    params.require(:profile).permit(:user_id, :username, :first_name, :last_name,
          :email, :country, :time_zone, :native_language, :blog_url, :description, :avatar)
   end
 end

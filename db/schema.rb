@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131016042849) do
+ActiveRecord::Schema.define(version: 20131021164900) do
 
   create_table "profiles", force: true do |t|
     t.string   "username"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20131016042849) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "study_language"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|

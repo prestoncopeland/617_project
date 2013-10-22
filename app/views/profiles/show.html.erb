@@ -1,9 +1,6 @@
 <p class="well"><%= @profile.username %></p>
 
-<div class="show">
-<p>
-  <%= image_tag @profile.avatar.url(:medium) %>
-</p>
+<div class = "hero-unit">
 
 <p>
   <b>First Name:</b>
@@ -44,7 +41,12 @@
   <b>Description:</b>
   <%= @profile.description %>
 </p>
+
+<p>
+  <%= image_tag @profile.avatar.url(:medium) %>
+</p>
+
 </div>
 
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<%= link_to 'Back', root_path %>

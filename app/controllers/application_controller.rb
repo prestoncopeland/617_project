@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   #dum dum dum change
   protect_from_forgery with: :exception
 
+  #this makes the methods avail through the app
   helper_method :current_user, :logged_in?
   def current_user
     # if there's an authenticated user,
@@ -13,5 +14,12 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
       !!current_user #returns boolean
+  end
+
+  def require_user
+    if !logged_in?
+      flash[:error] = "You must be logged in."
+      redirect_to root_path
+    end
   end
 end
