@@ -1,12 +1,10 @@
 Cosc617app::Application.routes.draw do
-<<<<<<< HEAD
+
   resources :posts
   resources :topics
   resources :forums
   root 'static_pages#home', :as => "root"
-=======
 
->>>>>>> 0405c220117cb94c1bb06159e27e4f37a6da4305
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
