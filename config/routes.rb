@@ -1,8 +1,12 @@
 Cosc617app::Application.routes.draw do
+<<<<<<< HEAD
   resources :posts
   resources :topics
   resources :forums
   root 'static_pages#home', :as => "root"
+=======
+
+>>>>>>> 0405c220117cb94c1bb06159e27e4f37a6da4305
   get '/login', to: 'sessions#new', as: 'login'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
@@ -16,6 +20,16 @@ Cosc617app::Application.routes.draw do
   resources :journals
   resources :entries
 
+resources :boards do
+   resources :conversations
+
+ end
+  get '/boards/:board_id/conversations/:id/reply' => "conversations#reply", :as => :reply_board_conversation
+ post '/boards/:board_id/conversations/:id/reply' => "conversations#save_reply", :as => :save_replay_conversation
+
+   resources :comments
+
+   resources :conversations
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
