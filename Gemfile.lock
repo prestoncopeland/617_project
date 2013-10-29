@@ -61,10 +61,14 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    metaclass (0.0.1)
     method_source (0.8.1)
     mime-types (1.25)
     minitest (4.7.5)
+    mocha (0.14.0)
+      metaclass (~> 0.0.1)
     multi_json (1.8.1)
+    nifty-generators (0.4.6)
     paperclip (3.5.1)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -139,6 +143,8 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jquery-rails
   language_list (~> 1.0.0)
+  mocha
+  nifty-generators
   paperclip (~> 3.0)
   pry
   rails (= 4.0.0)

@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_one :profile
   has_one :journal
+  has_many :posts
+  has_many :topics
 
   has_secure_password validations: false
 

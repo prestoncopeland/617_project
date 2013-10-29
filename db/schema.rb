@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131022173040) do
+ActiveRecord::Schema.define(version: 20131029183733) do
 
   create_table "entries", force: true do |t|
     t.string   "title"
@@ -22,10 +22,25 @@ ActiveRecord::Schema.define(version: 20131022173040) do
     t.datetime "updated_at"
   end
 
+  create_table "forums", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "journals", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "posts", force: true do |t|
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "topic_id"
     t.integer  "user_id"
   end
 
@@ -46,6 +61,16 @@ ActiveRecord::Schema.define(version: 20131022173040) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "study_language"
+    t.integer  "user_id"
+  end
+
+  create_table "topics", force: true do |t|
+    t.string   "name"
+    t.integer  "last_poster_id"
+    t.datetime "last_post_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "forum_id"
     t.integer  "user_id"
   end
 
