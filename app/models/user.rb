@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   has_one :journal
   has_many :posts
   has_many :topics
+  has_many :journal_comments
 
   has_secure_password validations: false
 

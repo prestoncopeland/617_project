@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   #this makes the methods avail through the app
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :require_user
   def current_user
     # if there's an authenticated user,
     #return the user obj, else return nil

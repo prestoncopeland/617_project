@@ -15,13 +15,16 @@ Cosc617app::Application.routes.draw do
   resources :profiles
   resources :sessions
   resources :users
+
   resources :journals
   resources :entries
+  resources :journal_comments
+
 
 resources :boards do
    resources :conversations
-
  end
+
   get '/boards/:board_id/conversations/:id/reply' => "conversations#reply", :as => :reply_board_conversation
  post '/boards/:board_id/conversations/:id/reply' => "conversations#save_reply", :as => :save_replay_conversation
 
