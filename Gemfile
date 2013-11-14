@@ -23,6 +23,8 @@ group :development, :test do
 
   gem 'pry'
 
+  gem "quiet_assets"
+
 end
 
 # Use bootstrap for styles
@@ -57,9 +59,17 @@ end
 # Use ActiveModel has_secure_password
 #gem 'bcrypt-ruby', '~> 3.0.0'
 
- gem 'bcrypt-ruby'
+gem 'bcrypt-ruby'
 
 gem 'nifty-generators'
+
+gem 'forem', :github => "radar/forem", :branch => "rails4"
+
+gem 'friendly_id', github: "FriendlyId/friendly_id"
+
+gem 'cancan', git: "https://github.com/nukturnal/cancan.git"
+
+gem 'will_paginate', '3.0.4'
 
 # Use unicorn as the app server
 # gem 'unicorn'

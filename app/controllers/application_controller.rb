@@ -1,4 +1,10 @@
 class ApplicationController < ActionController::Base
+  #before_action :reset_session
+  def forem_user
+    current_user
+  end
+  helper_method :forem_user
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   #dum dum dum change

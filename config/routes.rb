@@ -1,13 +1,22 @@
 Cosc617app::Application.routes.draw do
 
-  resources :posts
-  resources :topics
-  resources :forums
+  # This line mounts Forem's routes at /forums by default.
+  # This means, any requests to the /forums URL of your application will go to Forem::ForumsController#index.
+  # If you would like to change where this extension is mounted, simply change the :at option to something different.
+  #
+  # We ask that you don't use the :as option here, as Forem relies on it being the default of "forem"
+  mount Forem::Engine, :at => '/forums'
+
+
+  #resources :posts
+  #resources :topics
+  #resources :forums
   root 'static_pages#home', :as => "root"
 
-  get '/login', to: 'sessions#new', as: 'login'
+  get '/login', to: 'sessions#new', as: 'log_in'
   post '/login', to: 'sessions#create'
-  get '/logout', to: 'sessions#destroy'
+  get '/logout', to: 'sessions#destroy', as: 'log_out'
+  get '/users/sign_in', to: 'sessions#new'
 
   get '/register', to: 'users#new', as: 'register'
   get '/learner_home', to: 'static_pages#learner', :as => "learner_home"
@@ -17,20 +26,10 @@ Cosc617app::Application.routes.draw do
   resources :users
 
   resources :journals
+
   resources :entries
-  resources :journal_comments
 
-
-resources :boards do
-   resources :conversations
- end
-
-  get '/boards/:board_id/conversations/:id/reply' => "conversations#reply", :as => :reply_board_conversation
- post '/boards/:board_id/conversations/:id/reply' => "conversations#save_reply", :as => :save_replay_conversation
-
-   resources :comments
-
-   resources :conversations
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -86,4 +85,4 @@ resources :boards do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end
+

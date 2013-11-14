@@ -31,9 +31,7 @@
     Entry: <%= entry.entry %>
     <br/><br/>
     <%= link_to 'Edit entry', edit_entry_path(entry.id) %> |
-    <%= link_to 'View comments', journal_comment_path(entry.id) %> |
-    <%= link_to 'Make a comment', new_journal_comment_path %> |
-    Number of comments: <%= @journal_comments %>
+    <%= link_to 'View comments', '#' %> |
   </ul>
   <% end %>
 </p>

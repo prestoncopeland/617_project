@@ -10,22 +10,20 @@
 
     <% if logged_in? %>
 
-
-
       <!-- if journal hasn't been created -->
-      <% if current_user.journal.id == nil %>
+      <% if current_user.journal == nil %>
       <h4><%= link_to "Create Journal", new_journal_path%>
       <% else %>
       <%= link_to "View Journal", '/journals/:id'%>
       <% end %>
       <br/>
-      <%= link_to "Chat in Forum", forums_path%>
+      <%= link_to "Chat in Forum", forem_path%>
 
 
     <% else %>
-      <%= link_to "Login for Journal", login_path %>
+      <%= link_to "Login for Journal", log_in_path %>
       <br/>
-      <%= link_to "Login for Forum", login_path %>
+      <%= link_to "Login for Forum", log_in_path %>
     <% end %> </h4>
 
   </div>

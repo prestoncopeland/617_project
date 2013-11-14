@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
         redirect_to root_path
     else
       flash[:error] = "Invalid input. Have you registered?"
-      redirect_to login_path
+      redirect_to log_in_path
     end
 
   end

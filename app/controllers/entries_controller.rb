@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
 
   before_action :require_user
-  before_action :set_entry
+  before_action :set_entry, except: [:new, :create, :index]
 
   def show
   end
@@ -28,6 +28,7 @@ class EntriesController < ApplicationController
   end
 
   def create
+    @journal = Journal.find_by(params[:journal_id])
     @entry = @journal.entries.new(entry_params)
     @entry.journal_id = @journal.id
 

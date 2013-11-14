@@ -8,7 +8,6 @@ class JournalsController < ApplicationController
     @entries = @journal.entries
     @total_entries = @journal.entries.size
     @distinct_langs = Entry.select("distinct language").map {|a| a.language}
-    @journal_comments = @entries.inject(0) { |result, entry| result + entry.journal_comments.size}
   end
 
   def edit
