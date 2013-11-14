@@ -8,7 +8,7 @@
       <% if current_user.profile == nil %>
       <li><%= link_to "Create Profile", main_app.new_profile_path%></li>
       <% else %>
-      <li><%= link_to "View Profile", '/profiles/:id'%></li>
+      <li><%= link_to "View Your Profile", '/profiles/:id'%></li>
       <% end %>
     <% else %>
       <li><%= link_to "Log in", main_app.log_in_path %></li>
