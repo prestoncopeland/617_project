@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', ">=4.0.0"
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -71,6 +71,7 @@ gem 'cancan', git: "https://github.com/nukturnal/cancan.git"
 
 gem 'will_paginate', '3.0.4'
 
+gem "mailboxer", "~> 0.11.0"
 # Use unicorn as the app server
 # gem 'unicorn'
 

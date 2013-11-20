@@ -6,6 +6,7 @@
 
 <br>
 <footer id='admin_link'>
+  <%= link_to "Back", main_app.learner_home_path %> |
   <% if forem_admin? %>
     <%= link_to t("area", :scope => "forem.admin"), forem.admin_root_path %>
   <% end %>

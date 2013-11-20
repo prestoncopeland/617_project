@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @deck.name %>
+</p>
+
+<h5>Flashcards:</h5>
+
+<% if logged_in? %>
+<%= render 'shared/error_messages', obj: @flashcard %>
+<%= form_for [@deck, @flashcard] do |f| %>
+        Front
+        <%= f.text_area :front %>
+        <br />
+        Back
+        <%= f.text_area :back %>
+        <br />
+        <%= f.submit "Create Flashcard" %>
+<% end %>
+<%= link_to 'Review Flashcards', deck_flashcards_path(@deck), class: "btn btn-primary" %>
+<% end %>
+
+<br/> <br/>
+<%= link_to 'Edit', edit_deck_path(@deck) %> |
+<%= link_to 'Back', decks_path %>
