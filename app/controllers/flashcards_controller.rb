@@ -5,6 +5,7 @@ class FlashcardsController < ApplicationController
   # GET /flashcards.json
   def index
     @flashcards = Flashcard.all
+    @flashcard_counter = rand(@flashcards.size)
   end
 
   # GET /flashcards/1
