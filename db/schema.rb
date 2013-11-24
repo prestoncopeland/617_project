@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118111932) do
+ActiveRecord::Schema.define(version: 20131124082602) do
+
+  create_table "articles", force: true do |t|
+    t.integer  "user_id"
+    t.string   "level"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "conversations", force: true do |t|
     t.string   "subject",    default: ""
@@ -183,6 +192,14 @@ ActiveRecord::Schema.define(version: 20131118111932) do
     t.datetime "avatar_updated_at"
     t.string   "study_language"
     t.integer  "user_id"
+    t.string   "address"
+    t.date     "date_of_birth"
+    t.string   "sec_q_1"
+    t.string   "sec_q_2"
+    t.string   "sec_q_3"
+    t.string   "sec_a_1"
+    t.string   "sec_a_2"
+    t.string   "sec_a_3"
   end
 
   create_table "receipts", force: true do |t|
@@ -208,6 +225,7 @@ ActiveRecord::Schema.define(version: 20131118111932) do
     t.boolean  "forem_admin",          default: false
     t.string   "forem_state",          default: "pending_review"
     t.boolean  "forem_auto_subscribe", default: false
+    t.boolean  "teacher",              default: false
   end
 
 end

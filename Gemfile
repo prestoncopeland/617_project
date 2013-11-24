@@ -27,6 +27,10 @@ group :development, :test do
 
 end
 
+
+gem 'execjs'
+gem 'therubyracer', :platforms => :ruby
+
 # Use bootstrap for styles
 gem 'bootstrap-sass', '~> 2.3.2.2'
 
