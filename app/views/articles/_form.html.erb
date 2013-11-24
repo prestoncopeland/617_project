@@ -1,0 +1,17 @@
+<%= form_for @article do |f| %>
+  <%= render 'shared/error_messages', obj: @article %>
+  <div class='control-group'>
+    <%= f.label :level %>
+    <%= f.select :level, ["Beginner", "Intermediate", "Advanced"] %>
+  </div>
+  <div class='control-group'>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  <div class='control-group'>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+  </div>
+
+  <%= f.submit class: "btn btn-large btn-primary" %>
+  <% end %>

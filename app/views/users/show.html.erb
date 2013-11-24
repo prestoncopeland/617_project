@@ -1,0 +1,19 @@
+<h2>Welcome <%= current_user.name %>,</h2>
+
+<% if current_user.journal == nil %>
+  <h4><%= link_to "Create Journal", new_journal_path%>
+  <% else %>
+    <%= link_to "View Journal", '/journals/:id'%>
+  <% end %>
+  <br/>
+  <%= link_to "Chat in Forum", forem_path%>
+  <br/>
+  <%= link_to "View Other Learners", profiles_path %>
+  <br/>
+  <%= link_to "Learn With Flashcards", decks_path %>
+  <br/>
+  <br/>
+  <% if current_user.is_teacher? %>
+    <%= link_to "Create Article", new_article_path %> |
+    <%= link_to "My Articles", articles_path %>
+  <% end %>

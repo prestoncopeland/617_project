@@ -1,14 +1,19 @@
 <div class="masthead">
   <ul class="nav nav-pills pull-right">
-    <li class="active"><%=link_to "Home", main_app.root_path%></li>
-<!-- if user hasn't been logged in -->
+    <% if current_user %>
+      <li class="active"><%=link_to "Home", main_app.user_path(current_user.id) %></li>
+    <% else %>
+      <li class="active"><%=link_to "Home", main_app.root_path %></li>
+    <% end %>
+
+    <!-- if user hasn't been logged in -->
     <% if logged_in? %>
       <li><%= link_to "Log out", main_app.log_out_path %></li>
-<!-- if profile hasn't been created -->
+      <!-- if profile hasn't been created -->
       <% if current_user.profile == nil %>
-      <li><%= link_to "Create Profile", main_app.new_profile_path%></li>
+        <li><%= link_to "Create Profile", main_app.new_profile_path %></li>
       <% else %>
-      <li><%= link_to "View Your Profile", '/profiles/:id'%></li>
+        <li><%= link_to "View Your Profile", main_app.profile_path(current_user.profile.id) %></li>
       <% end %>
     <% else %>
       <li><%= link_to "Log in", main_app.log_in_path %></li>
@@ -17,4 +22,4 @@
   </ul>
   <h3>COSC617</h3>
 </div>
-<hr>
+<hr/>

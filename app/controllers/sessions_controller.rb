@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
         session[:user_id] = user.id
         flash[:notice] = "You've logged in!"
-        redirect_to root_path
+        redirect_to user
     else
       flash[:error] = "Invalid input. Have you registered?"
       redirect_to log_in_path

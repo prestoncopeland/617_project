@@ -1,0 +1,17 @@
+<h3>
+  Title: <%= @article.title %>
+</h3>
+
+<p>
+  Level: <%= @article.level %>
+</p>
+
+<p>
+  Content: <%= @article.content %>
+</p>
+
+<br/>
+<br/>
+
+<%= link_to "Edit", edit_article_path(@article) %> |
+<%= link_to "Destroy", article_path(@article), :method => :delete, :confirm => "Are you sure?" %>

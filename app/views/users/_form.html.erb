@@ -1,5 +1,4 @@
-<div class='well'>
-  <%= form_for @user do |f| %>
+<%= form_for @user do |f| %>
   <%= render 'shared/error_messages', obj: @user %>
   <div class='control-group'>
     <%= f.label :name %>
@@ -13,5 +12,10 @@
     <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
+
+  <div class='control-group'>
+    <%= f.check_box :teacher %>&nbsp; <span>I am a Teacher.</span>
+  </div>
+
   <%= f.submit @user.new_record? ? "Register" : "Update Profile", class: "btn btn-large btn-primary" %>
-  <% end %></div>
+  <% end %>

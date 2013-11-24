@@ -49,7 +49,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:user_id, :username, :first_name, :last_name,
-         :email, :country, :time_zone, :native_language, :blog_url, :description, :avatar)
+      params.require(:profile).permit(:user_id, :username, :first_name, :last_name,
+        :email, :country, :time_zone, :native_language, :blog_url, :description, :avatar, :address, :sec_q_1, :sec_q_2, :sec_q_3, :sec_a_1, :sec_a_2, :sec_a_3, :date_of_birth)
   end
 end

@@ -1,0 +1,28 @@
+<h2>Your Articles</h2>
+<% if @articles.any? %>
+  <table class="table">
+    <thead>
+    <th>Level</th>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Action</th>
+  </thead>
+
+  <tbody>
+    <% @articles.each do |a| %>
+      <tr>
+        <td><%= a.level %></td>
+        <td><%= a.title %></td>
+        <td><%= a.content.truncate(100) %></td>
+        <td>
+          <%= link_to "Edit", edit_article_path(a) %>
+          <%= link_to "Destroy", article_path(a), :method => :delete, :confirm => "Are you sure?" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+<% else %>
+  <%= link_to "Create a Article", new_article_path %>
+<% end %>

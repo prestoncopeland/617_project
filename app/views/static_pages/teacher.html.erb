@@ -1,0 +1,41 @@
+<div class="jumbotron">
+  <h1>Welcome, Teacher!</h1>
+  <p class="lead">Redefining the language-learning process by offering a multitude of functionalities to make learning a range of languages (including English) not only easier, but also more engaging.</p>
+</div>
+
+<hr>
+
+<div class="row-fluid marketing">
+  <div class="span6">
+
+    <% if logged_in? %>
+
+      <!-- if journal hasn't been created -->
+      <% if current_user.journal == nil %>
+        <h4><%= link_to "Create Journal", new_journal_path%>
+        <% else %>
+          <%= link_to "View Journal", '/journals/:id'%>
+        <% end %>
+        <br/>
+        <%= link_to "Chat in Forum", forem_path%>
+        <br/>
+        <%= link_to "View Other Learners", profiles_path %>
+        <br/>
+        <%= link_to "Learn With Flashcards", decks_path %>
+
+        <% if current_user.is_teacher? %>
+          <%= link_to "Create Article", new_article_path %> |
+          <%= link_to "My Articles", articles_path %>
+        <% end %>
+
+      <% else %>
+        <%= link_to "Login for Journal", log_in_path %>
+        <br/>
+        <%= link_to "Login for Forum", log_in_path %>
+      <% end %> </h4>
+
+  </div>
+
+</div>
+
+
