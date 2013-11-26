@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @private_forum.user_id %>
+</p>
+
+<p>
+  <strong>Tution session:</strong>
+  <%= @private_forum.tution_session_id %>
+</p>
+
+<p>
+  <strong>Accept:</strong>
+  <%= @private_forum.accept %>
+</p>
+
+<%= link_to 'Edit', edit_private_forum_path(@private_forum) %> |
+<%= link_to 'Back', private_forums_path %>

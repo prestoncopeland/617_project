@@ -1,0 +1,31 @@
+<h1>Listing private_forums</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Tution session</th>
+      <th>Accept</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @private_forums.each do |private_forum| %>
+      <tr>
+        <td><%= private_forum.user_id %></td>
+        <td><%= private_forum.tution_session_id %></td>
+        <td><%= private_forum.accept %></td>
+        <td><%= link_to 'Show', private_forum %></td>
+        <td><%= link_to 'Edit', edit_private_forum_path(private_forum) %></td>
+        <td><%= link_to 'Destroy', private_forum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Private forum', new_private_forum_path %>

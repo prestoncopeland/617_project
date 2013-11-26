@@ -3,9 +3,9 @@
   <%= render 'shared/error_messages', obj: @journal %>
 
   <%= f.label :title %>
-  <%= f.text_field :title, class: "span4" %>
+  <%= f.text_field :title, class: "span4", :required => true %>
 
-  <br>
+  <br/>
   <%= f.submit "Save", class: "btn btn-large btn-primary" %>
 <% end %>
 

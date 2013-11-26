@@ -1,19 +1,29 @@
 <h2>Welcome <%= current_user.name %>,</h2>
-
-<% if current_user.journal == nil %>
-  <h4><%= link_to "Create Journal", new_journal_path%>
+<% unless current_user.is_teacher? %>
+  <% if current_user.journal.blank? %>
+    <%= link_to "Create Journal", new_journal_path%>
   <% else %>
-    <%= link_to "View Journal", '/journals/:id'%>
+    <%= link_to "View Journal", journal_path(current_user.journal.id) %>
   <% end %>
-  <br/>
-  <%= link_to "Chat in Forum", forem_path%>
   <br/>
   <%= link_to "View Other Learners", profiles_path %>
   <br/>
   <%= link_to "Learn With Flashcards", decks_path %>
   <br/>
+<% end %>
+<br/>
+<%= link_to "Chat in Forum", forem_path%>
+<br/>
+<% if current_user.is_teacher? %>
+  <%= link_to "Create Article", new_article_path %> |
+  <%= link_to "My Articles", articles_path %>
   <br/>
-  <% if current_user.is_teacher? %>
-    <%= link_to "Create Article", new_article_path %> |
-    <%= link_to "My Articles", articles_path %>
-  <% end %>
+  <%= link_to "Create a Session for Tution", new_tution_session_path %> |
+  <%= link_to "My Tution Sessions", tution_sessions_path %> |
+  <%= link_to "My scheduled tution sessions", schedules_users_path %> |
+  <%= link_to "Review Requests", review_requests_path %>
+<% else %>
+  <%= link_to "Tution Sessions", tution_sessions_path %> |
+  <%= link_to "My scheduled tution sessions", schedules_users_path %> |
+  <%= link_to "Review Requests", review_requests_path %>
+<% end %>

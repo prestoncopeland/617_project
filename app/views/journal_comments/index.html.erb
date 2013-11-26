@@ -1,0 +1,31 @@
+<h1>Listing journal_comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Entry</th>
+      <th>User</th>
+      <th>Content</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @journal_comments.each do |journal_comment| %>
+      <tr>
+        <td><%= journal_comment.entry_id %></td>
+        <td><%= journal_comment.user_id %></td>
+        <td><%= journal_comment.content %></td>
+        <td><%= link_to 'Show', journal_comment %></td>
+        <td><%= link_to 'Edit', edit_journal_comment_path(journal_comment) %></td>
+        <td><%= link_to 'Destroy', journal_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Journal comment', new_journal_comment_path %>

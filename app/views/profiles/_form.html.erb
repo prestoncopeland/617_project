@@ -3,28 +3,28 @@
 	<%= render 'shared/error_messages', obj: @profile %>
 
   <%= f.label :username %>
-  <%= f.text_field :username, class: "span4" %>
+  <%= f.text_field :username, class: "span4", :required => true %>
 
   <%= f.label :first_name %>
-  <%= f.text_field :first_name, class: "span4" %>
+  <%= f.text_field :first_name, class: "span4", :required => true %>
 
   <%= f.label :last_name %>
-  <%= f.text_field :last_name, class: "span4" %>
+  <%= f.text_field :last_name, class: "span4", :required => true %>
 
   <%= f.label :email %>
-  <%= f.text_field :email, class: "span4" %>
+  <%= f.text_field :email, class: "span4", :required => true %>
 
   <%= f.label :country %>
-  <%= f.country_select (:country), nil, {}, {class: "span4"} %>
+  <%= f.country_select (:country), nil, {}, {class: "span4"}, :required => true %>
 
   <%= f.label :time_zone %>
-  <%= f.time_zone_select :time_zone, nil, {}, {class: "span4"}%>
+  <%= f.time_zone_select :time_zone, nil, {}, {class: "span4"}, :required => true%>
 
   <%= f.label :native_language %>
-  <%= f.select :native_language, options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_1", "name"), {}, {class: "span4"} %>
+  <%= f.select :native_language, options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_1", "name"), {}, {class: "span4"}, :required => true %>
 
   <%= f.label :blog_url %>
-  <%= f.text_field :blog_url, class: "span4" %>
+  <%= f.text_field :blog_url, class: "span4", :required => true %>
 
 	<div class="fileupload fileupload-new" data-provides="fileupload">
 		<div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"></div>
@@ -35,15 +35,15 @@
 	</div>
 
   <%= f.label :description %>
-  <%= f.text_area :description, :cols => "1", :rows => "4", class: "span4" %>
+  <%= f.text_area :description, :cols => "1", :rows => "4", class: "span4", :required => true %>
 
 	<%= f.label :study_language %>
-  <%= f.select :study_language, options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_1", "name"), {}, {class: "span4"} %>
+  <%= f.select :study_language, options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_1", "name"), {}, {class: "span4"}, :required => true %>
 
   <% if current_user.is_teacher? %>
   <div class='control-group'>
         <%= f.label :address %>
-        <%= f.text_area :address %>
+        <%= f.text_area :address, :required => true %>
       </div>
 
       <div class='control-group'>
@@ -53,32 +53,32 @@
 
       <div class='control-group'>
         <%= f.label :sec_q_1, "Security question 1" %>
-        <%= f.text_field :sec_q_1 %>
+        <%= f.text_field :sec_q_1, :required => true %>
       </div>
 
       <div class='control-group'>
         <%= f.label :sec_a_1, "Security question 1 answer" %>
-        <%= f.text_field :sec_a_1 %>
+        <%= f.text_field :sec_a_1, :required => true %>
       </div>
 
       <div class='control-group'>
         <%= f.label :sec_q_2, "Security question 2" %>
-        <%= f.text_field :sec_q_2 %>
+        <%= f.text_field :sec_q_2, :required => true %>
       </div>
 
       <div class='control-group'>
         <%= f.label :sec_a_2, "Security question 2 answer" %>
-        <%= f.text_field :sec_a_2 %>
+        <%= f.text_field :sec_a_2, :required => true %>
       </div>
 
       <div class='control-group'>
         <%= f.label :sec_q_3, "Security Question 3" %>
-        <%= f.text_field :sec_q_3 %>
+        <%= f.text_field :sec_q_3, :required => true %>
       </div>
 
       <div class='control-group'>
         <%= f.label :sec_a_3, "Security question 3 answer" %>
-        <%= f.text_field :sec_a_3 %>
+        <%= f.text_field :sec_a_3, :required => true %>
       </div>
   <% end %>
   <br/>

@@ -19,12 +19,21 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-      !!current_user #returns boolean
+    !!current_user #returns boolean
   end
 
   def require_user
     if !logged_in?
       flash[:error] = "You must be logged in."
+      redirect_to root_path
+    end
+  end
+
+  def require_teacher
+    if current_user and current_user.is_teacher?
+      return true
+    else
+      flash[:error] = "Access Denied"
       redirect_to root_path
     end
   end

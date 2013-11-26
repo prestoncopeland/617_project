@@ -1,0 +1,31 @@
+<% if @review_requests.any? %>
+  <table class="table table-bordered table-bordered table-white">
+    <thead>
+    <th>Learner</th>
+    <th>Teacher</th>
+    <th>Journal Title</th>
+    <th>Entry Title</th>
+    <th>Action</th>
+  </thead>
+
+  <tbody>
+    <% @review_requests.each do |rr| %>
+      <tr>
+        <td><%= User.find(rr.learner_id).name %></td>
+        <td><%= User.find(rr.teacher_id).name %></td>
+        <td><%= rr.entry.journal.title %></td>
+        <td><%= rr.entry.title %></td>
+        <td>
+          <% if rr.learner_id == current_user.id %>
+            <%= link_to "Delete", review_request_path(rr), :method => :delete, :confirm => "Are you sure?" %>
+          <% elsif rr.teacher_id == current_user.id %>
+            <%= link_to "Review", journal_entry_path(rr.entry.journal.id, rr.entry.id) %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+<% else %>
+  <h1>Currently Empty</h1>
+<% end %>

@@ -6,11 +6,11 @@
   </div>
   <div class='control-group'>
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :required => true %>
   </div>
   <div class='control-group'>
     <%= f.label :content %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, :required => true %>
   </div>
 
   <%= f.submit class: "btn btn-large btn-primary" %>

@@ -1,0 +1,21 @@
+<%= calendar @tution_sessions, {:class => "table table-bordered table-striped tution_index"} do |ts| %>
+  <div class="event"><%= link_to ts.title, ts %></div>
+<% end %>
+
+<style type="text/css">
+  .tution_index td{
+    height:100px;
+  }
+
+  .day{
+    width: 15%;
+  }
+
+  .tution_index{
+    background-color: white;
+  }
+
+  .tution_index .events{
+    background-color: lightblue !important;
+  }
+</style>

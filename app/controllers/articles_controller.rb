@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 
+  before_filter :require_user
+  
   def index
     @articles = current_user.articles
   end

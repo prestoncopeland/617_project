@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     #2. see if password matches
     #3. if so, log in
     #4. if not, error message
-    user = User.find_by(name: params[:name])
+    user = User.find_by_name(params[:name])
 
     #don't save objects into the session,
     #only ids

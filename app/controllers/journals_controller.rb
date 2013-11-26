@@ -3,8 +3,7 @@ class JournalsController < ApplicationController
   before_action :require_user
 
   def show
-    @user = current_user
-    @journal = @user.journal
+    @journal = Journal.find(params[:id])
     @entries = @journal.entries
     @total_entries = @journal.entries.size
     @distinct_langs = Entry.select("distinct language").map {|a| a.language}
@@ -27,7 +26,7 @@ class JournalsController < ApplicationController
   def destroy
     @journal = Journal.find(params[:id])
     @journal.destroy
-    redirect_to journals_url
+    redirect_to current_user
   end
 
   def new
@@ -35,11 +34,10 @@ class JournalsController < ApplicationController
   end
 
   def create
-    @journal = Journal.new(journal_params)
-    @journal.user = current_user
+    @journal = current_user.build_journal(journal_params)
     if @journal.save
       flash[:success] = "Journal created"
-      redirect_to 'show'
+      redirect_to journal_path(@journal)
     else
       render 'new'
     end
@@ -52,6 +50,6 @@ class JournalsController < ApplicationController
   private
 
   def journal_params
-    params.require(:journal).permit(:user_id, :title, entry_ids: [])
+    params.require(:journal).permit(:user_id, :title, :entry_ids => [])
   end
 end

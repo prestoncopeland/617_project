@@ -1,44 +1,61 @@
-<p class="jumbotron"><%= @journal.title %></p>
-
-<div class = "jumbotron">
-
-<p>
-  <b>Date Started:</b>
-  <%= @journal.created_at %>
-</p>
-
-<p>
-  <b>Total Entries:</b>
-  <%= @total_entries %>
-</p>
-
-<p>
-  <b>Languages:</b>
-  <% @distinct_langs.each do |lang|  %>
-  <ul>
-    <li> <%= lang %> </li>
-  </ul>
-  <% end %>
-</p>
-
-<p>
-  <b>Entries:</b>
-  <% @entries.each do |entry|  %>
-  <ul>
-    <li>Title: <%= entry.title %> </li>
-    Date Created: <%= entry.created_at %>
-    <br/>
-    Entry: <%= entry.entry %>
-    <br/><br/>
-    <%= link_to 'Edit entry', edit_entry_path(entry.id) %> |
-    <%= link_to 'View comments', '#' %> |
-  </ul>
-  <% end %>
-</p>
-
-
-</div>
+<table class="table table-bordered table-striped table-white">
+  <tbody>
+    <tr>
+      <td>
+        <b>Title :</b>
+      </td>
+      <td>
+        <%= @journal.title %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b>Date Started:</b>
+      </td>
+      <td>
+        <%= @journal.created_at %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b>Total Entries :</b>
+      </td>
+      <td>
+        <%= @total_entries %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <b>Languages :</b>
+      </td>
+      <td>
+        <% @distinct_langs.each do |lang|  %>
+          <ul>
+            <li> <%= lang %> </li>
+          </ul>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      
+      <td>
+        <b>Entries:</b>
+      </td>
+      <td>
+        <% @entries.each do |e| %>
+        <ul>
+          <li>Title:<%= e.title %>, Language:<%= e.language %>, Entry: <%= e.entry %>,
+            [<%= link_to "Edit", edit_journal_entry_path(@journal, e) %>],
+            [<%= link_to "Delete", journal_entry_path(@journal, e), :method => :delete, :confirm => "Are You sure?" %>],
+            [<%= link_to "Request For a Review", review_journal_entry_path(@journal, e) %>]</li>
+        </ul>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_journal_path(@journal) %> |
-<%= link_to 'Add Entry', new_entry_path %> |
+<%= link_to 'Delete', journal_path(@journal), :method => :delete, :confirm => "Are you sure?" %> |
+<%= link_to 'Add Entry', new_journal_entry_path(@journal) %> |
 <%= link_to 'Back', learner_home_path %>

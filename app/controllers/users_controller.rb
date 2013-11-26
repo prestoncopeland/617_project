@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :require_user, :except => [:new, :create, :to_s]
   def new
     @user = User.new
   end
@@ -22,11 +23,17 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def schedules
+    if current_user.is_teacher?
+      @schedules = PrivateForum.all.select { |pf| pf.teacher == current_user }
+    else
+      @schedules = current_user.private_forums
+    end
+  end
+
 
   private
-  # Using a private method to encapsulate the permissible parameters is just a good pattern
-  # since you'll be able to reuse the same permit list between create and update. Also, you
-  # can specialize this method with per-user checking of permissible attributes.
+
   def user_params
     params.require(:user).permit(:name, :password, :email, :teacher)
   end

@@ -1,3 +1,63 @@
-<h1> Edit Entry </h1>
-<%= render 'form' %>
-<%= link_to 'Back', journals_path %>
+<table class="table table-bordered table-striped table-white span5">
+  <tbody>
+    <tr>
+      <td><b>Journal Title</b></td>
+      <td><%= @journal.title %></td>
+    </tr>
+    <tr>
+      <td><b>Entry Title</b></td>
+      <td><%= @entry.title %></td>
+    </tr>
+    <tr>
+      <td><b>Learner</b></td>
+      <td><%= @journal.user.name %></td>
+    </tr>
+  </tbody>
+</table>
+<br/>
+<br/>
+<div class="span10">
+  <h2>Reviews</h2>
+  <% if @journal_comments.any? %>
+    <% @journal_comments.each do |jc|  %>
+      <table class="table table-bordered table-striped table-white">
+        <thead>
+        <th>Teacher/Learner</th>
+        <th>Name</th>
+        <th>Comment</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= jc.user.is_teacher? ? "Teacher" : "Learner" %></td>
+            <td><%= jc.user.name %></td>
+            <td><%= jc.content %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+  <% else %>
+    <h5>Currently Empty</h5>
+  <% end %>
+  <br/>
+  <br/>
+  <h4>Write a Review</h4>
+  <%= form_for @journal_comment do |f| %>
+    <% if @journal_comment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@journal_comment.errors.count, "error") %> prohibited this journal_comment from being saved:</h2>
+
+        <ul>
+          <% @journal_comment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.hidden_field :entry_id, :value => @entry.id %>
+    <%= f.text_area :content, :required => true,:placeholder => "Type your review here", :rows => 4 %><br/>
+    <%= f.submit "Submit Review", :class => "btn btn-primary" %>
+  <% end %>
+</div>
+
+
+

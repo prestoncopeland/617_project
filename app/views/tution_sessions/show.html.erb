@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @tution_session.start_time.strftime("#{@tution_session.start_time.day.ordinalize} %B %Y ") %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= distance_of_time_in_words @tution_session.end_time, @tution_session.start_time %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @tution_session.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @tution_session.description %>
+</p>
+
+<p>
+  <strong>Teacher Name:</strong>
+  <%= @tution_session.user.name %>
+</p>
+<% if @tution_session.user == current_user %>
+  <%= link_to 'Edit', edit_tution_session_path(@tution_session) %> |
+  <%= link_to 'Delete', tution_session_path(@tution_session), :method => :delete, :confirm => "Are you sure?" %>
+<% end %>
+
+<% if !current_user.is_teacher? and !current_user.has_schedule(@tution_session.id) %>
+  <%= link_to "Make schedule with this session", private_forums_path(:tution_session_id => @tution_session.id), :method => :post,:confirm => "Are you sure want to make a schedule for this tution session?", :class => "btn" %>
+<% end %>

@@ -1,9 +1,9 @@
 class CreateJournalComments < ActiveRecord::Migration
   def change
     create_table :journal_comments do |t|
-      t.text :body
+      t.integer :entry_id
       t.integer :user_id
-      t.integer :journal_id
+      t.text :content
 
       t.timestamps
     end

@@ -1,9 +1,11 @@
 class EntriesController < ApplicationController
 
   before_action :require_user
-  before_action :set_entry, except: [:new, :create, :index]
+  before_action :set_entry, :except => [:new, :create, :index]
 
   def show
+    @journal_comment = JournalComment.new
+    @journal_comments = @entry.journal_comments
   end
 
   def edit
@@ -12,7 +14,7 @@ class EntriesController < ApplicationController
   def update
     if @entry.update_attributes(entry_params)
       flash[:success] = "Entry was successfully updated."
-      redirect_to @entry
+      redirect_to journal_path(@journal)
     else
       render :edit
     end
@@ -20,17 +22,17 @@ class EntriesController < ApplicationController
 
   def destroy
     @entry.destroy
-    redirect_to entries_url
+    redirect_to journal_path(@journal)
   end
 
   def new
+    @journal = Journal.find(params[:journal_id])
     @entry = Entry.new
   end
 
   def create
-    @journal = Journal.find_by(params[:journal_id])
+    @journal = Journal.find(params[:journal_id])
     @entry = @journal.entries.new(entry_params)
-    @entry.journal_id = @journal.id
 
     if @entry.save
       flash[:success] = "Entry created"
@@ -44,11 +46,15 @@ class EntriesController < ApplicationController
     @entries = Entry.all
   end
 
+  def review
+    @teachers = User.where("teacher == ?", true)
+  end
+
   private
 
   def set_entry
-   @journal = Journal.find_by(params[:journal_id])
-   @entry = @journal.entries.find(params[:id])
+    @journal = Journal.find(params[:journal_id])
+    @entry = Entry.find(params[:id])
   end
 
   def entry_params
