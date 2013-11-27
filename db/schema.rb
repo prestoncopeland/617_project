@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131124082602) do
+ActiveRecord::Schema.define(version: 20131126144427) do
 
   create_table "articles", force: true do |t|
     t.integer  "user_id"
@@ -147,11 +147,28 @@ ActiveRecord::Schema.define(version: 20131124082602) do
   add_index "forem_views", ["user_id"], name: "index_forem_views_on_user_id"
   add_index "forem_views", ["viewable_id"], name: "index_forem_views_on_viewable_id"
 
+  create_table "journal_comments", force: true do |t|
+    t.integer  "entry_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "journals", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+  end
+
+  create_table "messages", force: true do |t|
+    t.integer  "sender"
+    t.integer  "receiver"
+    t.integer  "private_forum_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "notifications", force: true do |t|
@@ -173,6 +190,14 @@ ActiveRecord::Schema.define(version: 20131124082602) do
   end
 
   add_index "notifications", ["conversation_id"], name: "index_notifications_on_conversation_id"
+
+  create_table "private_forums", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "tution_session_id"
+    t.boolean  "accept",            default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "profiles", force: true do |t|
     t.string   "username"
@@ -215,6 +240,25 @@ ActiveRecord::Schema.define(version: 20131124082602) do
   end
 
   add_index "receipts", ["notification_id"], name: "index_receipts_on_notification_id"
+
+  create_table "review_requests", force: true do |t|
+    t.integer  "teacher_id"
+    t.integer  "learner_id"
+    t.integer  "entry_id"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tution_sessions", force: true do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
