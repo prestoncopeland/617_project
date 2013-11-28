@@ -56,6 +56,8 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
+    bootstrap-datepicker-rails (1.1.1.9)
+      railties (>= 3.0)
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     builder (3.1.4)
@@ -152,6 +154,8 @@ GEM
     select2-rails (3.4.9)
       sass-rails
       thor (~> 0.14)
+    simple_calendar (0.1.9)
+      rails (>= 3.0)
     simple_form (3.0.0)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
@@ -191,6 +195,7 @@ PLATFORMS
 DEPENDENCIES
   annotate (~> 2.5.0)
   bcrypt-ruby
+  bootstrap-datepicker-rails
   bootstrap-sass (~> 2.3.2.2)
   cancan!
   coffee-rails (~> 4.0.0)
@@ -210,6 +215,7 @@ DEPENDENCIES
   rails (>= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc
+  simple_calendar (~> 0.1.9)
   sqlite3
   therubyracer
   turbolinks

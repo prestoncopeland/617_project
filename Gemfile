@@ -27,7 +27,7 @@ group :development, :test do
 
 end
 
-
+gem 'bootstrap-datepicker-rails'
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
 
@@ -76,6 +76,8 @@ gem 'cancan', git: "https://github.com/nukturnal/cancan.git"
 gem 'will_paginate', '3.0.4'
 
 gem "mailboxer", "~> 0.11.0"
+
+gem "simple_calendar", "~> 0.1.9"
 # Use unicorn as the app server
 # gem 'unicorn'
 

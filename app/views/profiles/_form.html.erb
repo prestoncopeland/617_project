@@ -15,13 +15,13 @@
   <%= f.text_field :email, class: "span4", :required => true %>
 
   <%= f.label :country %>
-  <%= f.country_select (:country), nil, {}, {class: "span4"}, :required => true %>
+  <%= f.country_select :country, nil, {class: "span4"}, :required => true %>
 
   <%= f.label :time_zone %>
-  <%= f.time_zone_select :time_zone, nil, {}, {class: "span4"}, :required => true%>
+  <%= f.time_zone_select :time_zone, nil, {class: "span4"}, :required => true%>
 
   <%= f.label :native_language %>
-  <%= f.select :native_language, options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_1", "name"), {}, {class: "span4"}, :required => true %>
+  <%= f.select :native_language, options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_1", "name"), {class: "span4"}, :required => true %>
 
   <%= f.label :blog_url %>
   <%= f.text_field :blog_url, class: "span4", :required => true %>
@@ -38,7 +38,7 @@
   <%= f.text_area :description, :cols => "1", :rows => "4", class: "span4", :required => true %>
 
 	<%= f.label :study_language %>
-  <%= f.select :study_language, options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_1", "name"), {}, {class: "span4"}, :required => true %>
+  <%= f.select :study_language, options_from_collection_for_select(LanguageList::COMMON_LANGUAGES, "iso_639_1", "name"), {class: "span4"}, :required => true %>
 
   <% if current_user.is_teacher? %>
   <div class='control-group'>
