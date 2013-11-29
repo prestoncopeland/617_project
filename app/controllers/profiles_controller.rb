@@ -43,7 +43,8 @@ class ProfilesController < ApplicationController
   end
 
   def index
-  	@profiles = Profile.all
+    @users = User.where("teacher = ?", false).collect(&:id)
+  	@profiles = Profile.find_all_by_user_id(@users)
   end
 
   private

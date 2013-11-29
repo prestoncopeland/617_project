@@ -1,13 +1,13 @@
 Cosc617app::Application.routes.draw do
 
 
-  resources :journal_comments
+  resources :journal_comments, :only => :create
 
-  resources :review_requests
+  resources :review_requests, :only => [:create, :destroy]
 
-  resources :messages
+  resources :messages, :only => :create
 
-  resources :private_forums do
+  resources :private_forums , :only => [:create, :destroy] do
     member do
       get :messages
     end
