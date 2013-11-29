@@ -1,40 +1,42 @@
 <h1>Learner Profiles</h1>
 
 <table class="table">
-<thead>
-  <tr>
-    <th>Username</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email</th>
-    <th>Country</th>
-    <th>Time Zone</th>
-    <th>Native Language</th>
-    <th>Blog URL</th>
-    <th>Description</th>
-    <th>Photo</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-</thead>
-<tbody>
-<% @profiles.each do |profile| %>
-  <tr>
-    <td><%= profile.username %></td>
-    <td><%= profile.first_name  %></td>
-    <td><%= profile.last_name  %></td>
-    <td><%= profile.email %></td>
-    <td><%= profile.country %></td>
-    <td><%= profile.time_zone %></td>
-    <td><%= LanguageList::LanguageInfo.find(profile.native_language) %></td>
-    <td><%= profile.blog_url %></td>
-    <td><%= profile.description %></td>
-    <td><%= image_tag profile.avatar.url(:thumb) %></td>
-    <td><%= link_to "Show", profile %></td>
-    <td><%= link_to "Edit", edit_profile_path(profile) %></td>
-    <td><%= link_to "Delete", profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</tbody>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Country</th>
+      <th>Time Zone</th>
+      <th>Native Language</th>
+      <th>Blog URL</th>
+      <th>Description</th>
+      <th>Photo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @profiles.each do |profile| %>
+      <tr>
+        <td><%= profile.username %></td>
+        <td><%= profile.first_name  %></td>
+        <td><%= profile.last_name  %></td>
+        <td><%= profile.email %></td>
+        <td><%= profile.country %></td>
+        <td><%= profile.time_zone %></td>
+        <td><%= LanguageList::LanguageInfo.find(profile.native_language) %></td>
+        <td><%= profile.blog_url %></td>
+        <td><%= profile.description %></td>
+        <% if profile.avatar.present? %>
+          <td><%= image_tag profile.avatar.url(:thumb) %></td>
+        <% end %>
+        <td><%= link_to "Show", profile %></td>
+        <td><%= link_to "Edit", edit_profile_path(profile) %></td>
+        <td><%= link_to "Delete", profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

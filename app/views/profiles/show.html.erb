@@ -43,43 +43,45 @@
   </p>
 
   <% if current_user.is_teacher? %>
-<p>
-    <b>Address:</b>
-    <%= @profile.description %>
-  </p>
-  <p>
-    <b>Date of Birth:</b>
-    <%= @profile.date_of_birth %>
-  </p>
-  <p>
-    <b>Security question 1:</b>
-    <%= @profile.sec_q_1 %>
-  </p>
-  <p>
-    <b>Security question 1 answer:</b>
-    <%= @profile.sec_a_1 %>
-  </p>
-  <p>
-    <b>Security question 2:</b>
-    <%= @profile.sec_q_2 %>
-  </p>
-  <p>
-    <b>Security question 2 answer:</b>
-    <%= @profile.sec_a_2 %>
-  </p>
-  <p>
-    <b>Security question 3:</b>
-    <%= @profile.sec_q_3 %>
-  </p>
-  <p>
-    <b>Security question 3 answer:</b>
-    <%= @profile.sec_a_3 %>
-  </p>
+    <p>
+      <b>Address:</b>
+      <%= @profile.description %>
+    </p>
+    <p>
+      <b>Date of Birth:</b>
+      <%= @profile.date_of_birth %>
+    </p>
+    <p>
+      <b>Security question 1:</b>
+      <%= @profile.sec_q_1 %>
+    </p>
+    <p>
+      <b>Security question 1 answer:</b>
+      <%= @profile.sec_a_1 %>
+    </p>
+    <p>
+      <b>Security question 2:</b>
+      <%= @profile.sec_q_2 %>
+    </p>
+    <p>
+      <b>Security question 2 answer:</b>
+      <%= @profile.sec_a_2 %>
+    </p>
+    <p>
+      <b>Security question 3:</b>
+      <%= @profile.sec_q_3 %>
+    </p>
+    <p>
+      <b>Security question 3 answer:</b>
+      <%= @profile.sec_a_3 %>
+    </p>
   <% end %>
 
-  <p>
-    <%= image_tag @profile.avatar.url(:medium) %>
-  </p>
+  <% if @profile.avatar.present? %>
+    <p>
+      <%= image_tag @profile.avatar.url(:medium) %>
+    </p>
+  <% end %>
 
 </div>
 
