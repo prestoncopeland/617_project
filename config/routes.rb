@@ -3,7 +3,7 @@ Cosc617app::Application.routes.draw do
 
   resources :journal_comments, :only => :create
 
-  resources :review_requests, :only => [:create, :destroy]
+  resources :review_requests, :only => [:create, :destroy, :index]
 
   resources :messages, :only => :create
 
