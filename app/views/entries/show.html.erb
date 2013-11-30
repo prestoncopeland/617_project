@@ -40,22 +40,24 @@
   <% end %>
   <br/>
   <br/>
-  <h4>Write a Review</h4>
-  <%= form_for @journal_comment do |f| %>
-    <% if @journal_comment.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@journal_comment.errors.count, "error") %> prohibited this journal_comment from being saved:</h2>
+  <% if current_user.id != @journal.user.id %>
+    <h4>Write a Review</h4>
+    <%= form_for @journal_comment do |f| %>
+      <% if @journal_comment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@journal_comment.errors.count, "error") %> prohibited this journal_comment from being saved:</h2>
 
-        <ul>
-          <% @journal_comment.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
+          <ul>
+            <% @journal_comment.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= f.hidden_field :entry_id, :value => @entry.id %>
+      <%= f.text_area :content, :required => true,:placeholder => "Type your review here", :rows => 4 %><br/>
+      <%= f.submit "Submit Review", :class => "btn btn-primary" %>
     <% end %>
-    <%= f.hidden_field :entry_id, :value => @entry.id %>
-    <%= f.text_area :content, :required => true,:placeholder => "Type your review here", :rows => 4 %><br/>
-    <%= f.submit "Submit Review", :class => "btn btn-primary" %>
   <% end %>
 </div>
 
