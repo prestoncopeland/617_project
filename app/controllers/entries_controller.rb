@@ -47,7 +47,7 @@ class EntriesController < ApplicationController
   end
 
   def review
-    @teachers = User.where("teacher == ?", true)
+    @teachers = User.where("teacher = ?", true)
   end
 
   private
