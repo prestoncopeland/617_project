@@ -1,22 +1,30 @@
 <div class="jumbotron">
+  <%= image_tag "wordle.jpg", :style => "width:100%; margin-top:-40px;" %>
+  <hr/>
   <h1>Language Learning</h1>
   <p class="lead">Redefining the language-learning process by offering a multitude of functionalities to make learning a range of languages (including English) not only easier, but also more engaging.</p>
 </div>
 
-<hr>
-
 <div class="row-fluid marketing">
-  <div class="span6">
+
+  <div class="span4 sections">
+    <h4> Learner </h4>
+    <hr/>
     <h4><%= link_to "Learner", learner_home_path %></h4>
     <p>Start learning!</p>
-
-    <h4>Administrator</h4>
-    <p>Monitor overall activities.</p>
   </div>
 
-  <div class="span6">
+  <div class="span4 sections">
+    <h4> Administrator </h4>
+    <hr/>
+    <h4><%= link_to "Administrator", '#' %></h4>
+    <p>Manage Teachers and Students.</p>
+  </div>
+
+  <div class="span4 sections">
+    <h4> Teacher </h4>
+    <hr/>
     <h4><%= link_to "Teacher", teacher_home_path %></h4>
     <p>Guide your learners.</p>
   </div>
-
 </div>

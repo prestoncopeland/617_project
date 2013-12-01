@@ -10,3 +10,10 @@
     border: 2px solid white;
     background-color: white;
 }
+
+.sections {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: black;
+    padding: 30px;
+    text-align: center;
+}
