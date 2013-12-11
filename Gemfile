@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', ">=4.0.0"
+gem 'rails'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -65,13 +65,16 @@ gem 'nifty-generators'
 
 gem 'forem', :github => "radar/forem", :branch => "rails4"
 
-gem 'friendly_id', github: "FriendlyId/friendly_id"
+#gem 'friendly_id', github: "FriendlyId/friendly_id"
 
 gem 'cancan', git: "https://github.com/nukturnal/cancan.git"
 
 gem 'will_paginate', '3.0.4'
 
 gem "mailboxer", "~> 0.11.0"
+
+#gem 'acts_as_commentable_with_threading'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
